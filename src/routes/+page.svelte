@@ -134,13 +134,13 @@
                 soundPlaying = true;
                 sound.play();
                 timeStartTime = Date.now();
-            }, randomInt(minTime, MaxTime));
+            }, randomInt(minTime, maxTime));
         }
     };
 
     let bgEnabled = true;
     let minTime = 500;
-    let MaxTime = 15000;
+    let maxTime = 15000;
     const randomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 </script>
 <svelte:window on:keydown={handleSpaceBar}/>
@@ -184,10 +184,10 @@
                 </label>
                 <label>
                     <span>Maximum Time (ms)</span>
-                    <input type="number" bind:value={MaxTime}>
+                    <input type="number" min={0} max={maxTime} bind:value={maxTime}>
                 </label>
                 <label>
-                    <input type="checkbox" bind:checked={bgEnabled}>
+                    <input type="checkbox" min={minTime} bind:checked={bgEnabled}>
                     <span>Enable Background</span>
                 </label>
             </div>
